@@ -1,0 +1,53 @@
+    /* Report-specific styles */
+    .report-nav{display:flex;flex-direction:column;gap:.2rem;width:200px;flex-shrink:0}
+    .report-nav-btn{text-align:left;background:transparent;border:none;border-radius:8px;
+      padding:.55rem .9rem;font-family:var(--ff-body);font-size:.82rem;font-weight:500;
+      color:var(--text-muted);cursor:pointer;transition:background .15s,color .15s;width:100%}
+    .report-nav-btn:hover{background:var(--bg-hover);color:var(--text-primary)}
+    .report-nav-btn.active{background:rgba(79,106,245,.15);color:var(--accent);font-weight:600}
+    .report-nav-label{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--text-muted);padding:.4rem .9rem .15rem;margin-top:.3rem}
+    .report-layout{display:flex;gap:1.25rem;align-items:flex-start}
+    .report-panel{flex:1;min-width:0}
+    .report-section{display:none}
+    .report-section.active{display:block}
+    .report-header{display:flex;align-items:center;justify-content:space-between;
+      margin-bottom:1rem;flex-wrap:wrap;gap:.75rem}
+    .report-title{font-family:var(--ff-display);font-size:1.2rem;color:var(--text-primary)}
+    .export-btns{display:flex;gap:.5rem;align-items:center}
+    .filter-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
+      padding:1rem 1.25rem;margin-bottom:1rem;
+      display:flex;align-items:flex-end;gap:.75rem;flex-wrap:wrap;
+      transition:background .25s,border-color .25s}
+    .filter-card .field{min-width:140px;flex:1}
+    .result-count{font-size:.8rem;color:var(--text-muted);margin-bottom:.75rem}
+    
+    /* Summary counts */
+    .mini-stats{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}
+    .mini-stat{background:var(--bg-card);border:1px solid var(--border);border-radius:9px;
+      padding:.5rem .9rem;min-width:80px;text-align:center;transition:background .25s,border-color .25s}
+    .mini-stat-val{font-size:1.3rem;font-family:var(--ff-display);font-weight:400;line-height:1}
+    .mini-stat-lbl{font-size:.62rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+      color:var(--text-muted);margin-top:.1rem}
+      
+    /* Leave type count table */
+    .leave-summary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+      gap:.6rem;margin-top:.75rem}
+    .leave-type-chip{background:var(--bg-input);border:1px solid var(--border);border-radius:8px;
+      padding:.55rem .85rem;display:flex;justify-content:space-between;align-items:center;font-size:.82rem}
+    .leave-type-chip strong{color:var(--accent)}
+
+    /* Force Tom Select visibility in hidden tabs & prevent wrapping */
+    .ts-wrapper { width: 100% !important; min-width: 140px; }
+    .ts-wrapper.single .ts-control { display: flex !important; flex-wrap: nowrap !important; align-items: center; overflow: hidden !important; }
+    .ts-wrapper.single .ts-control .item { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 95% !important; pointer-events: none; }
+    .ts-wrapper.single .ts-control input { min-width: 0 !important; }
+    
+    /* Table Search and Sorting UI */
+    .table-wrap { width: 100%; overflow-x: auto; margin-bottom: 1.5rem; }
+    .table-wrap table { width: 100% !important; table-layout: fixed; }
+    .table-search { padding: 0.45rem 0.8rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.82rem; min-width: 220px; background: var(--bg-input); color: var(--text-primary); outline: none; transition: border-color 0.2s; }
+    .table-search:focus { border-color: var(--accent); }
+    th.sortable { cursor: pointer; position: relative; padding-right: 1.5rem !important; user-select: none; transition: background 0.2s; }
+    th.sortable:hover { background: rgba(0,0,0,0.04); }
+    th.sortable::after { content: '↕'; position: absolute; right: 0.4rem; color: var(--text-muted); opacity: 0.4; font-size: 0.9rem; font-weight: normal; }

@@ -1,0 +1,23 @@
+    .tabs { display:flex; gap:.5rem; margin-bottom:1.5rem; background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:.35rem; transition: background .25s, border-color .25s; }
+    .tab { flex:1; text-align:center; padding:.6rem 1rem; border-radius:9px; font-size:.88rem; font-weight:500; cursor:pointer; border:none; background:transparent; color:var(--text-muted); transition:background .2s, color .2s; }
+    .tab.active { background:var(--accent); color:#fff; }
+    
+    .pw-wrap { position:relative; }
+    .pw-wrap input { padding-right:2.5rem; }
+    .pw-toggle { position:absolute; right:.8rem; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--text-muted); display:flex; transition:color .15s; }
+    .pw-toggle:hover { color:var(--text-primary); }
+    .pw-toggle svg { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    
+    .msg { display:none; align-items:center; gap:.6rem; border-radius:var(--radius); padding:.7rem .9rem; font-size:.85rem; margin-bottom:1rem; }
+    .msg.visible { display:flex; }
+    .msg svg { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+    .msg.error { background:var(--error-bg); border:1px solid rgba(224,92,107,.2); color:var(--error); }
+    .msg.success { background:rgba(62,207,142,.1); border:1px solid rgba(62,207,142,.2); color:var(--success); }
+
+    /* Toolbar Styles for Sort/Filter/Export */
+    .list-toolbar { display: flex; flex-wrap: wrap; gap: 1rem; padding: 1rem 1.5rem; background: var(--bg-card); border-bottom: 1px solid var(--border); align-items: center; justify-content: space-between; }
+    .toolbar-group { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+    .toolbar-input { padding: 0.4rem 0.8rem; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-body); color: var(--text-primary); font-size: 0.85rem; }
+    .btn-export { display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; border-radius: 6px; border: 1px solid var(--border); background: transparent; color: var(--text-primary); font-size: 0.85rem; cursor: pointer; transition: background 0.2s; }
+    .btn-export:hover { background: var(--bg-body); }
+    .btn-export svg { width: 14px; height: 14px; }

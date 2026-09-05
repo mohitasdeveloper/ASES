@@ -1,0 +1,71 @@
+        /* --- Form Grid & Spacing --- */
+        .grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        .form-group label { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); }
+        
+        .form-control {
+            padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border);
+            background: var(--bg-main); color: var(--text-primary); font-family: var(--ff-body);
+            font-size: 0.95rem; transition: all 0.2s ease; width: 100%; box-sizing: border-box;
+        }
+        .form-control:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(79, 106, 245, 0.1); }
+        textarea.form-control { resize: vertical; min-height: 80px; }
+
+        /* --- Custom Autocomplete --- */
+        .autocomplete-wrapper { position: relative; width: 100%; }
+        .suggestions-list {
+            position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-card); 
+            border: 1px solid var(--border); border-radius: 8px; max-height: 200px; 
+            overflow-y: auto; z-index: 1000; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            list-style: none; padding: 0; margin: 0.25rem 0 0 0; display: none; 
+        }
+        .suggestions-list.active { display: block; }
+        .suggestions-list li {
+            padding: 0.75rem 1rem; cursor: pointer; border-bottom: 1px solid var(--border);
+            font-size: 0.9rem; color: var(--text-primary); transition: background 0.2s;
+        }
+        .suggestions-list li:last-child { border-bottom: none; }
+        .suggestions-list li:hover { background: rgba(79, 106, 245, 0.05); color: var(--accent); }
+
+        /* --- Table Controls & UI --- */
+        .remarks-log-card { margin-top: 2rem; padding: 1.5rem; }
+        .table-header-flex {
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;
+            padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+        }
+        .table-header-flex h3 { margin: 0; font-size: 1.25rem; }
+        .table-controls { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        
+        .control-input, .control-select {
+            padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--border);
+            background: var(--bg-main); color: var(--text-primary); font-family: var(--ff-body); 
+            font-size: 0.9rem; outline: none; transition: all 0.2s;
+        }
+        .control-input:focus, .control-select:focus { border-color: var(--accent); }
+        .control-input { width: 260px; }
+        
+        .btn-export {
+            display: inline-flex; align-items: center; gap: 0.5rem; background: var(--success, #10b981); 
+            color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; 
+            font-weight: 600; cursor: pointer; transition: all 0.2s ease; font-size: 0.9rem;
+        }
+        .btn-export:hover { background: #059669; transform: translateY(-1px); }
+        .btn-export svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+        
+        /* Action buttons */
+        .btn-action-icon {
+            background: none; border: none; cursor: pointer; padding: 6px; border-radius: 6px;
+            display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s;
+        }
+        .btn-action-icon.delete { color: var(--danger, #ef4444); }
+        .btn-action-icon.delete:hover { background: rgba(239, 68, 68, 0.1); }
+
+/* Shared data-table styles (also used in courses.css) */
+.data-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.data-table th, .data-table td { padding: 1rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border); }
+.data-table th { background: rgba(26, 34, 68, 0.03); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tbody tr { transition: background 0.2s; }
+.data-table tbody tr:hover { background: var(--bg-hover); }

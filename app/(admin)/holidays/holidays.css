@@ -1,0 +1,17 @@
+    .holiday-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.75rem;margin-top:1rem}
+    .holiday-card{background:var(--bg-input);border:1px solid var(--border);border-radius:10px;
+      padding:.9rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+      transition:background .25s,border-color .25s}
+    .holiday-card:hover{border-color:var(--error)}
+    .holiday-info{}
+    .holiday-date{font-weight:700;font-size:.88rem;color:var(--text-primary)}
+    .holiday-name{font-size:.78rem;color:var(--text-muted);margin-top:.1rem}
+    .holiday-day{font-size:.7rem;color:var(--accent);font-weight:600;margin-top:.1rem}
+    .modal-back{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);z-index:200;align-items:center;justify-content:center}
+    .modal-back.open{display:flex}
+    .modal{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:2rem;width:100%;max-width:380px;box-shadow:var(--shadow-modal);animation:mIn .22s ease both}
+    @keyframes mIn{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+    .modal-title{font-family:var(--ff-display);font-size:1.3rem;margin-bottom:.5rem}
+    .modal-body-text{font-size:.88rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.6}
+    .modal-actions{display:flex;gap:.75rem;justify-content:flex-end}
+    @media(max-width:768px){.sidebar{display:none}.content{padding:1rem}.topbar{padding:1rem}}

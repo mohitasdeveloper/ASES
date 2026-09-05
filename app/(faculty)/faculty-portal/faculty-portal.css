@@ -1,0 +1,92 @@
+    /* ── Portal Specific Styles ───────────────────────────────── */
+    .portal-top {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;
+    }
+    
+    .welcome-display { display: flex; flex-direction: column; gap: 0.4rem; }
+    .welcome-title { font-family: var(--ff-display); font-size: 2.2rem; font-weight: 700; color: var(--text-primary); line-height: 1.1; letter-spacing: -0.01em; }
+    .welcome-subtitle { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; }
+    
+    .date-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; background: var(--bg-card); border: 1px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,0.02); color: var(--text-primary); border-radius: 8px; font-size: 0.85rem; font-weight: 600; }
+    .date-badge svg { width: 16px; height: 16px; color: var(--accent); }
+
+    /* Stat Cards */
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem; margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02); position: relative; overflow: hidden;
+    }
+    .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .stat-card.blue::before { background: var(--accent); }
+    .stat-card.green::before { background: var(--success); }
+    .stat-card.yellow::before { background: #eab308; }
+    
+    .stat-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+    .stat-value { font-family: var(--ff-display); font-size: 2.5rem; font-weight: 400; color: var(--text-primary); line-height: 1; margin: 0.25rem 0; }
+    .stat-desc { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* Layout Grid */
+    .portal-grid {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem;
+    }
+    @media (max-width: 1024px) { .portal-grid { grid-template-columns: 1fr; } }
+    
+    .panel-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02); display: flex; flex-direction: column; overflow: hidden;
+    }
+    .panel-header {
+      padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); background: rgba(26, 34, 68, 0.02);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .panel-title { font-weight: 700; font-size: 1.05rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem; }
+    .panel-title svg { width: 18px; height: 18px; color: var(--accent); }
+    
+    /* Timeline (Today's Schedule) */
+    .timeline { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; flex: 1; overflow-y: auto; max-height: 500px; }
+    .timeline-empty { text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.95rem; font-style: italic; }
+    
+    .tl-item { display: flex; gap: 1rem; position: relative; }
+    .tl-item:not(:last-child)::after {
+      content: ''; position: absolute; left: 47px; top: 32px; bottom: -1.5rem;
+      width: 2px; background: var(--border); opacity: 0.5;
+    }
+    .tl-time { width: 90px; text-align: right; flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; padding-top: 0.2rem; }
+    .tl-time strong { font-size: 0.85rem; color: var(--text-primary); font-weight: 700; }
+    .tl-time span { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
+    
+    .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg-card); box-shadow: 0 0 0 2px var(--accent); margin-top: 0.45rem; flex-shrink: 0; position: relative; z-index: 2; }
+    .tl-dot.cancelled { background: var(--border); box-shadow: 0 0 0 2px var(--border); }
+    .tl-dot.break { background: #f59e0b; box-shadow: 0 0 0 2px #f59e0b; }
+    
+    .tl-content { background: var(--bg-input); border: 1px solid var(--border); padding: 1rem 1.25rem; border-radius: 10px; flex: 1; }
+    .tl-content.cancelled { opacity: 0.6; text-decoration: line-through; }
+    .tl-course { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+    .tl-subject { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .tl-room { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.8rem; color: var(--text-muted); font-weight: 500; background: var(--bg-card); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--border); }
+    
+    /* History Lists */
+    .history-list { padding: 0; margin: 0; list-style: none; flex: 1; overflow-y: auto; max-height: 250px; }
+    .hl-item { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .hl-item:last-child { border-bottom: none; }
+    .hl-item:hover { background: rgba(0,0,0,0.01); }
+    .hl-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .hl-title { font-weight: 600; font-size: 0.85rem; color: var(--text-primary); }
+    .hl-date { font-size: 0.75rem; color: var(--text-muted); }
+    .hl-badge { font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+    /* Status Colors */
+    .bg-green { background: #dcfce7; color: #059669; }
+    .bg-red { background: #fee2e2; color: #dc2626; }
+    .bg-amber { background: #fef3c7; color: #d97706; }
+    .bg-gray { background: #f1f5f9; color: #475569; }
+
+    .error-state { padding: 4rem; text-align: center; }
+    .error-state svg { width: 48px; height: 48px; color: var(--error); margin-bottom: 1rem; opacity: 0.8; }
+    .error-state h2 { font-family: var(--ff-display); font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .error-state p { color: var(--text-muted); font-size: 0.95rem; max-width: 400px; margin: 0 auto; }

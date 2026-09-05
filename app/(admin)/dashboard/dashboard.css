@@ -1,0 +1,106 @@
+    /* ── Dashboard Specific Styles ───────────────────────────────── */
+    .dashboard-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;
+    }
+    
+    .date-display { display: flex; flex-direction: column; gap: 0.5rem; }
+    .date-title { font-family: var(--ff-display); font-size: 2rem; font-weight: 700; color: var(--text-primary); line-height: 1.1; }
+    .date-badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.75rem; background: rgba(79, 106, 245, 0.1); color: var(--accent); border-radius: 20px; font-size: 0.75rem; font-weight: 600; width: fit-content; }
+    .date-badge svg { width: 14px; height: 14px; }
+
+    /* Date Picker Input */
+    .date-picker-wrapper { position: relative; display: flex; align-items: center; }
+    .date-picker-input {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 0.65rem 1rem 0.65rem 2.6rem !important;
+      font-family: var(--ff-body); font-weight: 600;
+      color: var(--text-primary); font-size: 0.9rem; cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: border-color 0.2s;
+      width: 150px !important;
+      outline: none;
+    }
+    .date-picker-input:focus, .date-picker-input:hover { border-color: var(--accent); }
+    .date-picker-icon { 
+      position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); 
+      display: flex; align-items: center; justify-content: center; 
+      color: var(--text-muted); pointer-events: none; z-index: 10; 
+    }
+    .date-picker-icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Stat Cards */
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem; margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02); position: relative; overflow: hidden;
+    }
+    .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .stat-card.blue::before { background: var(--accent); }
+    .stat-card.green::before { background: var(--success); }
+    .stat-card.gray::before { background: #94a3b8; } 
+    .stat-card.yellow::before { background: #eab308; }
+    .stat-card.red::before { background: var(--error); }
+    
+    .stat-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+    .stat-value { font-family: var(--ff-display); font-size: 2.5rem; font-weight: 400; color: var(--text-primary); line-height: 1; margin: 0.25rem 0; }
+    .stat-desc { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* Quick Links */
+    .quick-links {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem; margin-bottom: 2rem;
+    }
+    .quick-link {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1rem 1.25rem; display: flex; align-items: center; gap: 1rem;
+      text-decoration: none; color: var(--text-primary); transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .quick-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.05); }
+    .quick-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(79, 106, 245, 0.08); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .quick-icon svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .quick-text { display: flex; flex-direction: column; }
+    .quick-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.15rem; }
+    .quick-desc { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* Lists Section */
+    .lists-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;
+    }
+    @media (max-width: 768px) { .lists-grid { grid-template-columns: 1fr; } }
+    
+    .list-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02); display: flex; flex-direction: column; min-height: 300px;
+    }
+    .list-header {
+      padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .list-title { font-weight: 700; font-size: 1rem; color: var(--text-primary); }
+    .list-link { font-size: 0.8rem; color: var(--accent); text-decoration: none; font-weight: 500; }
+    .list-link:hover { text-decoration: underline; }
+    
+    .list-body { padding: 0; margin: 0; list-style: none; flex: 1; overflow-y: auto; max-height: 400px; }
+    .list-item {
+      padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+    }
+    .list-item:last-child { border-bottom: none; }
+    .list-empty { padding: 3rem 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+    
+    .item-content { display: flex; flex-direction: column; gap: 0.25rem; }
+    .item-title { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem; }
+    .item-subtitle { font-size: 0.8rem; color: var(--text-muted); }
+    .item-meta { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; }
+
+    /* Status Dots */
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+    .dot-on_time { background: var(--success); }
+    .dot-late { background: #f59e0b; }
+    .dot-not_engaged { background: var(--error); }
+    .dot-not_marked { background: var(--text-muted); }

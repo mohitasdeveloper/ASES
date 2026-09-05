@@ -1,0 +1,51 @@
+    /* Professional Filter Card */
+    .filter-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: background 0.25s, border-color 0.25s; }
+    
+    .table-search { padding: 0.55rem 1rem; border-radius: 8px; border: 1px solid var(--border); width: 100%; min-width: 300px; background: var(--bg-input); color: var(--text-primary); outline: none; transition: border-color 0.2s; font-family: var(--ff-body); }
+    .table-search:focus { border-color: var(--accent); }
+    
+    .export-btns { display: flex; gap: 0.5rem; align-items: center; }
+    .btn-export { display: flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-primary); font-size: 0.85rem; cursor: pointer; transition: background 0.2s; font-weight: 500; height: 38px; }
+    .btn-export:hover { background: var(--bg-hover); }
+
+    /* Professional Table Styles */
+    .table-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th { background: rgba(127,127,200,0.04); padding: 0.85rem 1rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--border); font-size: 0.85rem; vertical-align: middle; color: var(--text-primary); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--bg-hover); }
+    
+    th.sortable { cursor: pointer; position: relative; padding-right: 1.5rem !important; user-select: none; transition: background 0.2s; }
+    th.sortable:hover { background: rgba(0,0,0,0.04); }
+    th.sortable::after { content: '↕'; position: absolute; right: 0.4rem; color: var(--text-muted); opacity: 0.4; font-size: 0.9rem; font-weight: normal; }
+
+    /* Modal Styles */
+    .modal-back { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); z-index: 200; align-items: center; justify-content: center; padding: 1rem; }
+    .modal-back.open { display: flex; }
+    .modal { background: var(--bg-card); width: 100%; max-width: 400px; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow-modal); animation: mIn 0.2s ease both; }
+    @keyframes mIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    .modal-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .modal-title { font-family: var(--ff-display); font-size: 1.2rem; font-weight: 600; color: var(--text-primary); }
+    .modal-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .modal-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 0.75rem; }
+    
+    .modal-input { width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-primary); font-family: var(--ff-body); outline: none; transition: border-color 0.2s; }
+    .modal-input:focus { border-color: var(--accent); }
+
+/* Tom Select fit fix (used on csf-mapping) */
+.ts-wrapper.single .ts-control { display: flex !important; flex-wrap: nowrap !important; align-items: center; overflow: hidden !important; }
+.ts-wrapper.single .ts-control .item { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 95% !important; pointer-events: none; }
+
+/* Leaves page badges (not in base theme.css) */
+.badge-approved { background: var(--success-bg); color: var(--success); }
+.badge-rejected { background: var(--error-bg); color: var(--error); }
+.badge-type { background: rgba(79,106,245,.12); color: var(--accent); }
+.badge-halfday { background: rgba(245,166,35,.12); color: var(--warn); }
+
+/* Leaves page layout */
+.form-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+.quick-bar { display:flex; align-items:flex-end; gap:1rem; flex-wrap:wrap; }
+.quick-bar .field { flex:1; min-width:200px; }
+.filters { display:flex; align-items:flex-end; gap:.75rem; flex-wrap:wrap; margin-bottom:1.25rem; }
+.filters .field { min-width:160px; flex: 1; max-width: 300px; }

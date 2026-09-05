@@ -1,0 +1,472 @@
+    /* ── Design Tokens ───────────────────────────── */
+    :root {
+      --bg:           #f8fafc; /* Unified soft background */      
+      --bg-card:      #ffffff;       
+      --bg-input:     #f1f5f9;       
+      --border:       #cbd5e1;       
+      --border-focus: #1e3a8a;       
+      --accent:       #1e3a8a;       
+      --accent-hover: #1e40af;       
+      --accent-glow:  rgba(30, 58, 138, 0.15);
+      --text-primary: #0f172a;       
+      --text-muted:   #475569;       
+      --text-label:   #64748b;       
+      --error:        #dc2626;       
+      --error-bg:     rgba(220, 38, 38, 0.10);
+      --success:      #10b981;       
+      --college-red:  #b91c1c;       
+      --ff-display:   'DM Serif Display', Georgia, serif;
+      --ff-body:      'DM Sans', system-ui, sans-serif;
+      --radius:       12px;
+    }
+
+    /* ── Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: var(--ff-body);
+      background-color: var(--bg);
+      color: var(--text-primary);
+      overflow: hidden;
+    }
+
+    /* Seamless full-screen layout instead of harsh split */
+    body {
+      display: flex;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Unified Grid spanning the entire screen gracefully */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(30, 58, 138, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 58, 138, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      /* Smooth diagonal fade - works perfectly on any ultrawide monitor */
+      mask-image: linear-gradient(135deg, black 10%, transparent 100%);
+      -webkit-mask-image: linear-gradient(135deg, black 10%, transparent 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── Left panel — Branding ─────────────────────────────────── */
+    .brand-panel {
+      flex: 1.15;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 5vw;
+      background: transparent;
+    }
+
+    .brand-top { position: relative; z-index: 1; }
+
+    /* Polished College Header aligned with Sidebar */
+    .brand-logo-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .college-logo {
+      width: 85px;
+      height: 85px;
+      object-fit: contain;
+      flex-shrink: 0;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.2rem;
+    }
+
+    .brand-wordmark {
+      font-family: var(--ff-display);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-submark {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .brand-dept {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-top: 0.3rem;
+    }
+
+    .brand-middle {
+      position: relative;
+      z-index: 1;
+      margin-top: 2rem;
+    }
+
+    .brand-headline {
+      font-family: var(--ff-display);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-headline em {
+      font-style: italic;
+      color: var(--college-red);
+    }
+
+    .brand-desc {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 38ch;
+    }
+
+    .brand-divider {
+      width: 60px;
+      height: 4px;
+      background: var(--college-red);
+      margin-bottom: 2rem;
+      border-radius: 4px;
+    }
+
+    .brand-bottom {
+      position: relative;
+      z-index: 1;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ── Right panel — login form ───────────────────────────────── */
+    .login-panel {
+      flex: 0.85;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5vw;
+      background: transparent;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 440px;
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 20px;
+      padding: 3.5rem 3rem;
+      /* Soft floating shadow to pop against the grid */
+      box-shadow: 0 25px 50px -12px rgba(30, 58, 138, 0.08), 0 10px 15px -5px rgba(0, 0, 0, 0.03);
+      animation: fadeUp 0.45s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-header { margin-bottom: 2.5rem; text-align: center; }
+
+    .card-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--college-red);
+      margin-bottom: 1rem;
+      display: inline-block;
+      background: rgba(185, 28, 28, 0.08);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+    }
+
+    .card-title {
+      font-family: var(--ff-display);
+      font-size: 2.2rem;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .card-subtitle {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* ── Form elements ─────────────────────────────────────────── */
+    .field { margin-bottom: 1.5rem; }
+
+    .field label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .input-wrap { position: relative; }
+
+    .input-icon {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--text-label);
+      display: flex;
+    }
+
+    .input-icon svg {
+      width: 18px; height: 18px; stroke: currentColor; fill: none;
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.95rem 1rem 0.95rem 3rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    input:focus {
+      background: var(--bg-card);
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    input::placeholder { color: var(--text-label); opacity: 0.7; font-weight: 400; }
+
+    .pw-toggle {
+      position: absolute;
+      right: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-label);
+      padding: 0;
+      display: flex;
+      transition: color 0.15s;
+    }
+    .pw-toggle:hover { color: var(--accent); }
+    .pw-toggle svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── Error banner ──────────────────────────────────────────── */
+    .error-banner {
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--error-bg);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--error);
+      animation: shake 0.35s ease;
+    }
+
+    .error-banner.visible { display: flex; }
+
+    .error-banner svg { width: 18px; height: 18px; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25%      { transform: translateX(-5px); }
+      75%      { transform: translateX(5px); }
+    }
+
+    /* ── Submit button ─────────────────────────────────────────── */
+    .btn-login {
+      width: 100%;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius);
+      color: #fff;
+      font-family: var(--ff-body);
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 1rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-login:hover:not(:disabled) {
+      background: var(--accent-hover);
+      box-shadow: 0 6px 16px rgba(30, 58, 138, 0.25);
+    }
+
+    .btn-login:active:not(:disabled) { transform: translateY(1px); }
+    .btn-login:disabled { opacity: 0.7; cursor: not-allowed; }
+
+    .spinner {
+      display: none;
+      width: 18px; height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.65s linear infinite;
+      flex-shrink: 0;
+    }
+    .loading .spinner { display: block; }
+    .loading .btn-text { opacity: 0.8; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Forgot password link ──────────────────────────────────── */
+    .forgot-wrap { text-align: right; margin-top: -0.8rem; margin-bottom: 1.5rem; }
+
+    .link-forgot {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.15s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: var(--ff-body);
+    }
+    .link-forgot:hover { text-decoration: underline; }
+
+    /* ── Forgot password modal ─────────────────────────────────── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      animation: modalIn 0.25s ease both;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-title { font-family: var(--ff-display); font-size: 1.8rem; color: var(--text-primary); margin-bottom: 0.5rem; }
+    .modal-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5; }
+
+    .modal-actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+
+    .btn-secondary {
+      flex: 1;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      font-family: var(--ff-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.85rem 1rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-secondary:hover { background: #e2e8f0; }
+
+    .btn-primary {
+      flex: 2;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius);
+      color: #fff;
+      font-family: var(--ff-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.85rem 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .btn-primary:hover:not(:disabled) { background: var(--accent-hover); }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .modal-feedback {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      display: none;
+      font-weight: 500;
+    }
+    .modal-feedback.success { display: block; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); color: var(--success); }
+    .modal-feedback.error { display: block; background: var(--error-bg); border: 1px solid rgba(220, 38, 38, 0.2); color: var(--error); }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+    .card-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      body { flex-direction: column; overflow-y: auto; overflow-x: hidden; }
+      .brand-panel { display: none; } /* Hide branding entirely on mobile to prioritize login */
+      .login-panel { padding: 3rem 1.5rem; align-items: flex-start; }
+      .login-card { max-width: 100%; padding: 2.5rem 1.5rem; }
+    }

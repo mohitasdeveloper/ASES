@@ -1,0 +1,44 @@
+    /* Prevent Tom Select from wrapping text to the next line */
+    .ts-wrapper.single .ts-control { display: flex !important; flex-wrap: nowrap !important; align-items: center; overflow: hidden !important; }
+    .ts-wrapper.single .ts-control .item { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 95% !important; pointer-events: none; }
+    .ts-wrapper.single .ts-control input { min-width: 0 !important; }
+
+    .controls-bar { display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; flex-wrap:wrap; background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1.35rem; margin-bottom:1.25rem; transition:background .25s,border-color .25s; }
+    .controls-group { display:flex; gap:1rem; align-items:flex-end; flex-wrap:wrap; }
+    .btn-export { display: flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-primary); font-size: 0.85rem; cursor: pointer; transition: background 0.2s; font-weight: 500; height: 38px;}
+    .btn-export:hover { background: var(--bg-hover); }
+    .btn-export svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* Custom Grid for Weekly View */
+    .weekly-grid-wrap { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; overflow:hidden; min-width:900px; margin-bottom: 2rem; }
+    .wg-header { display:grid; grid-template-columns: 100px repeat(6, minmax(130px, 1fr)); border-bottom:1px solid var(--border); background:rgba(127,127,200,.05); }
+    .wg-th { padding:0.75rem; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); border-right:1px solid var(--border); text-align: center; }
+    .wg-th:last-child { border-right:none; }
+    
+    .wg-row { display:grid; grid-template-columns: 100px repeat(6, minmax(130px, 1fr)); border-bottom:1px solid rgba(200,210,230,.4); }
+    .wg-row:last-child { border-bottom:none; }
+    .wg-row.is-break { background: var(--bg-input); }
+    
+    .wg-time { padding:0.5rem; border-right:1px solid var(--border); display:flex; flex-direction:column; justify-content:center; align-items: center; text-align: center; }
+    .wg-time .tl { font-weight:700; font-size:0.75rem; color:var(--text-label); }
+    .wg-time .tr { font-size:0.65rem; color:var(--text-muted); margin-top:0.15rem; }
+    
+    .wg-cell { padding:0.6rem; border-right:1px solid var(--border); min-height: 80px; display:flex; flex-direction:column; justify-content:center; align-items: center; text-align: center; gap: 0.2rem; transition: background 0.2s; }
+    .wg-cell:last-child { border-right:none; }
+    .wg-cell.filled { background: rgba(79,106,245,.04); }
+    .wg-cell.filled:hover { background: rgba(79,106,245,.08); }
+    
+    .wg-line1 { font-size: 0.68rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; }
+    .wg-line2 { font-size: 0.8rem; font-weight: 600; color: var(--text-primary); line-height: 1.2; }
+    .wg-line3 { font-size: 0.7rem; color: var(--accent); font-weight: 500; }
+    
+    .break-label { grid-column: 2 / 8; display:flex; align-items:center; justify-content:center; padding:0.5rem; font-size:0.8rem; font-style:italic; color:var(--text-muted); font-weight:500; }
+
+    .grid-placeholder { padding:4rem; text-align:center; color:var(--text-muted); display:flex; flex-direction:column; align-items:center; gap:1rem; }
+    .grid-placeholder svg { width:40px; height:40px; stroke:var(--border); fill:none; stroke-width:1.5; }
+    
+    /* Virtual Section */
+    .virtual-section { background: var(--bg-card); border-radius: 12px; border: 1px dashed var(--accent); padding: 1.5rem; margin-bottom: 2rem; display: none;}
+    .virtual-header { display: flex; align-items: center; gap: 0.5rem; color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; }
+    .v-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .v-card { padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid rgba(79,106,245,.2); background: rgba(79,106,245,.04); min-width: 200px; }
